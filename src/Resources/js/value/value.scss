@@ -1,0 +1,57 @@
+/* Colors copied from the palette of sulu-admin-bundle, which cannot be imported from outside of that package. */
+$linkHoverColor: #52b6ca;
+$badgeDefaultBackgroundColor: #f5f5f5;
+$badgeDefaultColor: #000;
+$badgeInfoBackgroundColor: #52b6ca;
+$badgeSuccessBackgroundColor: #6ac86b;
+$badgeWarningBackgroundColor: #f8d200;
+$badgeWarningColor: #000;
+$badgeErrorBackgroundColor: #cf3939;
+$badgeColor: #fff;
+
+/* sulu-admin-bundle styles no anchors inside a table or a card, so a link would read as plain text.
+   Underlined and inheriting the surrounding color, the way the "link" skin of its Button component looks. */
+.link {
+    color: inherit;
+    text-decoration: underline;
+
+    &:hover {
+        color: $linkHoverColor;
+    }
+}
+
+/* Geometry copied from the Chip component of sulu-admin-bundle so a badge looks native. Chip itself only
+   offers two colors and carries click and delete affordances a read-only cell has no use for. */
+.badge {
+    display: inline-block;
+    border-radius: 3px;
+    padding: 0 10px;
+    font-size: 12px;
+    line-height: 18px;
+    white-space: nowrap;
+}
+
+.default {
+    background-color: $badgeDefaultBackgroundColor;
+    color: $badgeDefaultColor;
+}
+
+.info {
+    background-color: $badgeInfoBackgroundColor;
+    color: $badgeColor;
+}
+
+.success {
+    background-color: $badgeSuccessBackgroundColor;
+    color: $badgeColor;
+}
+
+.warning {
+    background-color: $badgeWarningBackgroundColor;
+    color: $badgeWarningColor;
+}
+
+.error {
+    background-color: $badgeErrorBackgroundColor;
+    color: $badgeColor;
+}

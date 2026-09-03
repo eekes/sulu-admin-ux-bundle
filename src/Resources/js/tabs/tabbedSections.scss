@@ -1,0 +1,43 @@
+/* Colors copied from the palette of sulu-admin-bundle, which cannot be imported from outside of that package. */
+$borderColor: #ddd;
+$errorColor: #cf3939;
+
+/* Horizontal padding of an inline tab in sulu-admin-bundle. */
+$tabPadding: 10px;
+
+/* Classes are repeated to outweigh the rules the inline tabs of sulu-admin-bundle set on themselves. */
+.tabs.tabs.tabs {
+    padding: 0;
+
+    /* An inset shadow instead of a border, so the underline of the active tab covers the line instead of
+       sitting one pixel above it. */
+    box-shadow: inset 0 -1px 0 $borderColor;
+}
+
+/* The first tab lines up with the fields below it, so it drops its padding and shifts its underline. */
+.tabs.tabs li:first-child > button {
+    padding-left: 0;
+}
+
+.tabs.tabs li:first-child::after {
+    left: 0;
+    width: calc(100% - $tabPadding);
+}
+
+.tabs-item {
+    margin-bottom: 20px;
+}
+
+.error-badge {
+    display: inline-block;
+    min-width: 14px;
+    height: 14px;
+    padding: 0 3px;
+    border-radius: 7px;
+    background-color: $errorColor;
+    color: #fff;
+    font-size: 9px;
+    font-weight: bold;
+    line-height: 14px;
+    text-align: center;
+}

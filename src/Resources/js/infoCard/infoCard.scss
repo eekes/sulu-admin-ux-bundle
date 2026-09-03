@@ -1,0 +1,28 @@
+/* Colors copied from the palette of sulu-admin-bundle, which cannot be imported from outside of that package. */
+$labelColor: #6e6e6e;
+$placeholderColor: #999;
+
+/* A grid instead of a table, so the label column is as wide as the longest label of this card and the
+   values of every row still line up. */
+.info-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 20px;
+    row-gap: 10px;
+    margin: 0;
+    font-size: 12px;
+}
+
+.label {
+    color: $labelColor;
+}
+
+.value {
+    margin: 0;
+    font-weight: bold;
+}
+
+.placeholder {
+    color: $placeholderColor;
+    font-size: 12px;
+}

@@ -1,0 +1,14 @@
+/* Colors copied from the palette of sulu-admin-bundle, which cannot be imported from outside of that package. */
+$placeholderColor: #999;
+
+/* Every entry is one line, because what a card like this holds is an address or a contact block rather
+   than prose. Spaced paragraphs are what the "html" value type is for. */
+.text-card {
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.placeholder {
+    color: $placeholderColor;
+    font-size: 12px;
+}

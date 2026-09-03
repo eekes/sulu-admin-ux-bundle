@@ -1,0 +1,78 @@
+/* Colors copied from the palette of sulu-admin-bundle, which cannot be imported from outside of that package. */
+$borderColor: #ccc;
+$backgroundColor: #fff;
+$errorColor: #cf3939;
+$disabledBackgroundColor: #f5f5f5;
+$disabledColor: #878787;
+$levelColor: #999;
+$textColor: #000;
+
+/* Height of an input in sulu-admin-bundle, and the width that fits "H1" plus the arrow of the select. */
+$height: 30px;
+$borderWidth: 1px;
+$levelMinWidth: 62px;
+
+.headline {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: $height;
+    border: $borderWidth solid $borderColor;
+    border-radius: 3px;
+    background-color: $backgroundColor;
+    font-size: 12px;
+    overflow: hidden;
+
+    &.error {
+        border-color: $errorColor;
+    }
+
+    &.disabled {
+        background-color: $disabledBackgroundColor;
+    }
+}
+
+.level {
+    /* Sized by its own content, so a level renamed through a meta title is not clipped. */
+    flex: 0 0 auto;
+    min-width: $levelMinWidth;
+    height: 100%;
+    color: $levelColor;
+    /* The flat select skin draws no border of its own, so the seam with the input is drawn here. */
+    border-right: $borderWidth solid $borderColor;
+
+    /* The flat skin gives the button no height, while the arrow inside it is positioned for the 30px
+       button of the default skin — so without this the arrow sits above the label. Dropping the vertical
+       padding for a full-height line box also removes the descender gap an inline-block button adds
+       below itself, which would push the whole button up. */
+    button {
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding-top: 0;
+        padding-bottom: 0;
+        line-height: calc($height - 2 * $borderWidth);
+    }
+}
+
+.text {
+    flex: 1 1 auto;
+    /* Without this a long title stretches the flex item instead of scrolling inside it. */
+    min-width: 0;
+    height: 100%;
+    padding: 0 10px;
+    border: none;
+    background-color: transparent;
+    font-size: 12px;
+    color: $textColor;
+
+    &::placeholder {
+        color: $levelColor;
+    }
+
+    &:disabled {
+        color: $disabledColor;
+        /* Safari and iOS ignore `color` on a disabled input. */
+        -webkit-text-fill-color: $disabledColor;
+    }
+}
