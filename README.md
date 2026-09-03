@@ -31,7 +31,6 @@ form quicker to scan and quicker to fill in, without changing how Sulu stores or
 ## Installation
 
 ```bash
-composer config repositories.eekes-sulu-admin-ux vcs https://github.com/Eekes/sulu-admin-ux-bundle
 composer require eekes/sulu-admin-ux-bundle
 ```
 
