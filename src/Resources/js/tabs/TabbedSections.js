@@ -6,6 +6,7 @@ import jexl from 'jexl';
 import Grid from 'sulu-admin-bundle/components/Grid';
 import Tabs from 'sulu-admin-bundle/components/Tabs';
 import conditionDataProviderRegistry from 'sulu-admin-bundle/containers/Form/registries/conditionDataProviderRegistry';
+import countErrors from '../error/countErrors';
 import tabbedSectionsStyles from './tabbedSections.scss';
 import type {Node} from 'react';
 import type FormInspector from 'sulu-admin-bundle/containers/Form/FormInspector';
@@ -71,7 +72,7 @@ class TabbedSections extends React.Component<Props> {
         return tabs[this.selectedIndex] || tabs[0];
     }
 
-    countErrors(items: Schema): number {
+    countTabErrors(items: Schema): number {
         const {errors} = this.props;
 
         if (!errors) {
@@ -82,10 +83,10 @@ class TabbedSections extends React.Component<Props> {
             const item = items[key];
 
             if ('section' === item.type) {
-                return count + this.countErrors(item.items || {});
+                return count + this.countTabErrors(item.items || {});
             }
 
-            return count + (errors[key] ? 1 : 0);
+            return count + countErrors(errors[key]);
         }, 0);
     }
 
@@ -97,7 +98,7 @@ class TabbedSections extends React.Component<Props> {
             return [];
         }
 
-        const errorCount = this.countErrors(tab.items);
+        const errorCount = this.countTabErrors(tab.items);
 
         if (!errorCount) {
             return [];
