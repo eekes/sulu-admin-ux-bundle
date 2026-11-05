@@ -28,6 +28,11 @@ $tabPadding: 10px;
     margin-bottom: 20px;
 }
 
+/* Repeated to outweigh the float of a grid section in sulu-admin-bundle. */
+.hidden-tab.hidden-tab {
+    display: none;
+}
+
 .error-badge {
     display: inline-block;
     min-width: 14px;

@@ -153,7 +153,18 @@ class TabbedSections extends React.Component<Props> {
                     </Grid.Item>
                 }
 
-                {!!selectedTab && this.renderItems(selectedTab.items, selectedTab.schemaPath)}
+                {/* Every tab stays mounted and the unselected ones are only hidden. Integrations that act on mounted
+                    fields, like the bulk translation of sulu-ai-translator-bundle, would otherwise skip every field
+                    outside of the selected tab. */}
+                {tabs.map((tab) => (
+                    <Grid.Section
+                        className={tab === selectedTab ? undefined : tabbedSectionsStyles.hiddenTab}
+                        colSpan={12}
+                        key={tab.key}
+                    >
+                        {this.renderItems(tab.items, tab.schemaPath)}
+                    </Grid.Section>
+                ))}
             </Grid.Section>
         );
     }
