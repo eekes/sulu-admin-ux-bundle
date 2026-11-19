@@ -1,0 +1,19 @@
+/* Colors copied from the palette of sulu-admin-bundle, which cannot be imported from outside of that package. */
+$borderColor: #ddd;
+$labelColor: #888;
+
+.heading {
+    padding: 8px 20px 4px;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: $labelColor;
+    cursor: default;
+
+    &:not(:first-child) {
+        margin-top: 6px;
+        padding-top: 12px;
+        border-top: 1px solid $borderColor;
+    }
+}

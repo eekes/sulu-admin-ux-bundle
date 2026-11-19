@@ -1,6 +1,8 @@
 // @flow
 import {blockPreviewTransformerRegistry, fieldRegistry, listFieldTransformerRegistry} from 'sulu-admin-bundle/containers';
 import './tabs/patchRenderer';
+import './blockGroups';
+import groupOptions from './blockGroups/groupOptions';
 import TabbedSections from './tabs/TabbedSections';
 import {isTabsSection} from './tabs/tabsSection';
 import InfoCard from './infoCard/InfoCard';
@@ -31,6 +33,7 @@ listFieldTransformerRegistry.add(LIST_FIELD_TYPE_LINK, new LinkFieldTransformer(
 listFieldTransformerRegistry.add(LIST_FIELD_TYPE_MONEY, new MoneyFieldTransformer());
 
 export {
+    groupOptions,
     isTabsSection,
     renderValue,
     InfoCard,
