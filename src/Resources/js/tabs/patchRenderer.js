@@ -35,11 +35,12 @@ Renderer.prototype.renderItem = function(
         return originalRenderItem.call(this, schemaField, schemaKey, schemaPath);
     }
 
-    const {data, errors, formInspector, showAllErrors} = this.props;
+    const {data, dataPath, errors, formInspector, showAllErrors} = this.props;
 
     return (
         <TabbedSections
             data={data}
+            dataPath={(dataPath || '') + '/' + schemaKey}
             errors={errors}
             formInspector={formInspector}
             items={schemaField.items}

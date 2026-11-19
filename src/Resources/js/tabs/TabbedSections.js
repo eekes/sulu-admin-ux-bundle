@@ -21,6 +21,7 @@ type Tab = {|
 
 type Props = {|
     data: Object,
+    dataPath: string,
     errors?: ErrorCollection,
     formInspector: FormInspector,
     items: Schema,
@@ -34,12 +35,15 @@ type Props = {|
 class TabbedSections extends React.Component<Props> {
     @observable selectedIndex: number = 0;
 
+    // Evaluated as if the tabs were a field at their own place in the data, so `__parent` is the block they sit in,
+    // exactly as for the fields beside them. Sulu's own sections are evaluated without a path, which inside a block
+    // makes `__parent` the whole form and leaves a condition on a block's own value always false.
     @computed get conditionData(): Object {
-        const {data, formInspector} = this.props;
+        const {data, dataPath, formInspector} = this.props;
 
         return conditionDataProviderRegistry.getAll().reduce(
             function(conditionData, conditionDataProvider) {
-                return {...conditionData, ...conditionDataProvider(conditionData, undefined, formInspector)};
+                return {...conditionData, ...conditionDataProvider(conditionData, dataPath, formInspector)};
             },
             {...data}
         );
